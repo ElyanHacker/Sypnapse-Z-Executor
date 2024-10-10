@@ -1,0 +1,290 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sypnapse Z</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://steamuserimages-a.akamaihd.net/ugc/1686018698563862143/992FC1B8F40BB36D701C3055E5957E5AC4C82A6B/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true');
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 300px;
+            margin-left: 20px;
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 300px;
+        }
+
+        header {
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #ff4757;
+            font-size: 24px;
+        }
+
+        p {
+            color: #cccccc;
+            margin: 10px 0;
+        }
+
+        .download-link {
+            margin-top: 20px;
+            color: #ffffff;
+        }
+
+        .download-link a {
+            color: lightcoral;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .download-link a:hover {
+            text-decoration: underline;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+       
+
+        button:hover {
+            background-color: #e84118;
+        }
+
+        .username-display {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #ff4757;
+            font-weight: bold;
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px; /* Could be more or less, depending on screen size */
+            color: #000;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+        /* Discord Button */
+        .discord-button {
+            margin-top: 20px;
+            padding: 8px 12px; /* Adjusted padding for a more standard button size */
+            background-color: #7289da; /* Discord blue */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: none; /* Hidden initially */
+            width: auto; /* Use automatic width */
+        }
+
+        .discord-button:hover {
+            background-color: #5b6eae; /* Darker blue on hover */
+        }
+
+        /* Logout Button */
+        .logout-button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ff4757; /* Same as login */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: none; /* Hidden initially */
+            width: auto; /* Use automatic width */
+        }
+    </style>
+</head>
+<body>
+    <div class="username-display" id="usernameDisplay"></div>
+
+    <div class="container">
+        <header>
+            <h1>Unlock Synapse Z (pc executor)</h1>
+            <p>Your gateway to enhanced Roblox Cheating.</p>
+        </header>
+        <div class="download-link">
+            <p><a href="https://gofile.io/d/nab0D0" download="">Download Executor</a></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Cryptic (Android executor)</h1>
+            <p>Get the power of Mobiele cheating!</p>
+        </header>
+        <div class="download-link">
+            <p><a href="https://crypticexecutor.com/download/" download="">Download Executor</a></p>
+        </div>
+    </div>
+
+    <div class="login-container">
+        <h2>Login / Sign Up</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required="">
+            <input type="password" id="password" placeholder="Password" required="">
+            <button type="submit">Login</button>
+            <p>or</p>
+            <button type="button" id="signupBtn">Sign Up</button>
+        </form>
+        <button id="logoutButton" class="logout-button">Logout</button>
+    </div>
+
+    <!-- Discord Invite Button -->
+    <button id="discordButton" class="discord-button" onclick="window.open('https://discord.gg/WcqNuRYX', '_blank')">Join Our Discord</button>
+
+    <!-- Modal for account details -->
+    <div id="accountModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">×</span>
+            <h2>Account Details</h2>
+            <p id="accountUsername"></p>
+            <p id="accountPassword"></p>
+        </div>
+    </div>
+
+    <script>
+        const validUsers = {}; // Store valid users
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Check if the credentials are valid
+            if (validUsers[username] && validUsers[username] === password) {
+                // If login is successful, show the username
+                document.getElementById('usernameDisplay').innerText = `Logged in as: ${username}`;
+                document.getElementById('usernameDisplay').style.display = 'block'; // Show the username display
+
+                // Store the username and password for displaying in modal
+                document.getElementById('accountUsername').innerText = `Username: ${username}`;
+                document.getElementById('accountPassword').innerText = `Password: ${password}`;
+
+                // Hide login form and show Discord button after login
+                document.querySelector('.login-container').style.display = 'none'; 
+                document.getElementById('discordButton').style.display = 'block'; // Show Discord button
+                document.getElementById('logoutButton').style.display = 'block'; // Show logout button
+            } else {
+                alert('Invalid username or password.'); // Show an error message
+            }
+        });
+
+        document.getElementById('signupBtn').addEventListener('click', function() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Simple check to prevent duplicate usernames
+            if (validUsers[username]) {
+                alert('Username already exists. Please choose a different one.');
+            } else {
+                // Save the new user
+                validUsers[username] = password;
+                alert(`Sign up successful for: ${username}`);
+            }
+        });
+
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            // Reset the state for logout
+            document.getElementById('usernameDisplay').style.display = 'none'; // Hide username display
+            document.querySelector('.login-container').style.display = 'block'; // Show login form
+            document.getElementById('discordButton').style.display = 'none'; // Hide Discord button
+            document.getElementById('logoutButton').style.display = 'none'; // Hide logout button
+
+            // Clear the input fields
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        });
+
+        // Show account details modal when username is clicked
+        document.getElementById('usernameDisplay').addEventListener('click', function() {
+            document.getElementById('accountModal').style.display = 'block';
+        });
+
+        // Close modal
+        document.getElementById('closeModal').onclick = function() {
+            document.getElementById('accountModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('accountModal')) {
+                document.getElementById('accountModal').style.display = 'none';
+            }
+        }
+    </script>
+
+
+</body>
